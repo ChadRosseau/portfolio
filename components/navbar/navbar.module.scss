@@ -1,0 +1,49 @@
+@import "app/variables.module.scss";
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 50px calc((5vw - 50px) / 2);
+    width: 5vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    overflow: hidden;
+    transition-duration: 0.5s;
+    .button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+        font-weight: 200;
+        cursor: pointer;
+        white-space: nowrap;
+        .icon {
+            margin-right: 20px;
+        }
+        &.active {
+            background: $primary-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            p {
+                text-shadow: 0 0 8px #00ffee;
+            }
+        }
+        &:hover {
+            p {
+                text-shadow: 0 0 8px #00ffee;
+            }
+        }
+    }
+    &:hover {
+        width: 260px;
+    }
+    p {
+        transition-duration: 0.3s;
+    }
+}

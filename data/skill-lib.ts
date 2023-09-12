@@ -1,11 +1,40 @@
+export enum SkillTag {
+    HTML = "html",
+    CSS = "css",
+    Sass = "sass",
+    Tailwind = "tailwind",
+    Javascript = "javascript",
+    Typescript = "typescript",
+    Angular = "angular",
+    Flask = "flask",
+    ReactJS = "react",
+    NextJS = "nextjs",
+    NodeJS = "nodejs",
+    ExpressJS = "express",
+    PostgreSQL = "postgresql",
+    SQLite = "sqlite",
+    Firebase = "firebase",
+    Pinecone = "pinecone",
+    GCloud = "google_cloud",
+    Azure = "azure",
+    AWS = "aws",
+    Git = "git",
+    GitHub = "github",
+    Bash = "bash",
+    Docker = "docker",
+    Python = "python",
+    Rust = "rust",
+    C = "c",
+    Cpp = "c++",
+    OpenAI = "openai",
+    Maps = "google_maps",
+    IEX = "iex",
+}
+
 export interface Skill {
     name: string,
     icon_url: string,
     proficiency: number
-}
-
-export interface SkillCategory {
-    [skillName: string]: Skill
 }
 
 export interface SkillCollection {
@@ -13,7 +42,7 @@ export interface SkillCollection {
 }
 
 export const Skills: SkillCollection = {
-    frontend: [
+    Frontend: [
         {
             name: "HTML",
             icon_url: "html",
@@ -30,6 +59,11 @@ export const Skills: SkillCollection = {
             proficiency: 3
         },
         {
+            name: "Tailwind CSS",
+            icon_url: "tailwind",
+            proficiency: 2
+        },
+        {
             name: "Javascript",
             icon_url: "javascript",
             proficiency: 4
@@ -40,7 +74,7 @@ export const Skills: SkillCollection = {
             proficiency: 4
         },
     ],
-    frameworks: [
+    Frameworks: [
         {
             name: "Angular",
             icon_url: "angular",
@@ -63,7 +97,7 @@ export const Skills: SkillCollection = {
         },
 
     ],
-    backend: [
+    Backend: [
         {
             name: "NodeJS",
             icon_url: "nodejs",
@@ -74,6 +108,8 @@ export const Skills: SkillCollection = {
             icon_url: "express",
             proficiency: 3
         },
+    ],
+    Database: [
         {
             name: "PostgreSQL",
             icon_url: "postgresql",
@@ -94,8 +130,9 @@ export const Skills: SkillCollection = {
             icon_url: "pinecone",
             proficiency: 3
         },
-    ],
-    cloud: [
+    ]
+    ,
+    Cloud: [
         {
             name: "Google Cloud",
             icon_url: "google_cloud",
@@ -112,7 +149,7 @@ export const Skills: SkillCollection = {
             proficiency: 2
         },
     ],
-    technologies: [
+    Technologies: [
         {
             name: "Git",
             icon_url: "git",
@@ -124,31 +161,41 @@ export const Skills: SkillCollection = {
             proficiency: 4
         },
         {
-            name: "Docker",
-            icon_url: "bash",
-            proficiency: 3
-        },
-        {
             name: "Bash",
             icon_url: "bash",
             proficiency: 3
         },
-    ],
-    systems: [
         {
-            name: "C",
-            icon_url: "c",
-            proficiency: 3
+            name: "Docker",
+            icon_url: "docker",
+            proficiency: 2
         },
+    ],
+    Languages: [
         {
-            name: "C++",
-            icon_url: "c++",
-            proficiency: 1
+            name: "Python",
+            icon_url: "python",
+            proficiency: 4
         },
         {
             name: "Rust",
             icon_url: "rust",
             proficiency: 2
+        },
+        {
+            name: "Dart",
+            icon_url: "dart",
+            proficiency: 2
+        },
+        {
+            name: "C",
+            icon_url: "c",
+            proficiency: 2
+        },
+        {
+            name: "C++",
+            icon_url: "c++",
+            proficiency: 1
         },
     ],
     APIs: [
@@ -164,8 +211,20 @@ export const Skills: SkillCollection = {
         },
         {
             name: "IEX Cloud",
-            icon_url: "",
+            icon_url: "iex",
             proficiency: 2
+        },
+    ],
+    Mobile: [
+        {
+            name: "Flutter",
+            icon_url: "flutter",
+            proficiency: 2
+        },
+        {
+            name: "React Native",
+            icon_url: "react",
+            proficiency: 1
         },
     ]
 }

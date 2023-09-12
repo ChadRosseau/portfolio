@@ -17,6 +17,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.nav}>
+      <img src="images/logo.png" alt="" className={styles.logo} />
       <Link href="/">
         <div
           className={`${styles.button} ${pathname == "/" ? styles.active : ""}`}
@@ -25,7 +26,7 @@ const Navbar = () => {
             className={styles.icon}
             size={50}
             strokeWidth={1}
-            stroke={pathname == "/" ? "#00ff88" : "#FFF"}
+            stroke={pathname == "/" ? "#00ffbb" : "#FFF"}
           />
           <p>Home</p>
         </div>
@@ -40,7 +41,7 @@ const Navbar = () => {
             className={styles.icon}
             size={50}
             strokeWidth={1}
-            stroke={pathname == "/experience" ? "#00ff88" : "#FFF"}
+            stroke={pathname == "/experience" ? "#00ffbb" : "#FFF"}
           />
           <p>Experience</p>
         </div>
@@ -55,7 +56,7 @@ const Navbar = () => {
             className={styles.icon}
             size={50}
             strokeWidth={1}
-            stroke={pathname == "/projects" ? "#00ff88" : "#FFF"}
+            stroke={pathname == "/projects" ? "#00ffbb" : "#FFF"}
           />
           <p>Projects</p>
         </div>
@@ -70,7 +71,7 @@ const Navbar = () => {
             className={styles.icon}
             size={50}
             strokeWidth={1}
-            stroke={pathname == "/skills" ? "#00ff88" : "#FFF"}
+            stroke={pathname == "/skills" ? "#00ffbb" : "#FFF"}
           />
           <p>Skills</p>
         </div>
@@ -85,12 +86,18 @@ const Navbar = () => {
             className={styles.icon}
             size={50}
             strokeWidth={1}
-            stroke={pathname == "/about" ? "#00ff88" : "#FFF"}
+            stroke={pathname == "/about" ? "#00ffbb" : "#FFF"}
           />
           <p>About Me</p>
         </div>
       </Link>
-      {/* {pathname} */}
+      <div className={styles.pageLabelWrapper}>
+        <p className="textGradient">
+          {pathname == "/"
+            ? "Home"
+            : pathname.charAt(1).toUpperCase() + pathname.slice(2)}
+        </p>
+      </div>
     </div>
   );
 };

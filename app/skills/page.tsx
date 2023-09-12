@@ -16,12 +16,12 @@ const SkillsPage = () => {
                     <SkillGroup
                         groupName="Frameworks"
                         group={Skills.Frameworks}
-                        delay={2.5}
+                        delay={2.25}
                     />
                     <SkillGroup
                         groupName="Mobile"
                         group={Skills.Mobile}
-                        delay={4}
+                        delay={3.75}
                     />
                 </div>
                 <div className={styles.skillsColumn}>
@@ -33,29 +33,29 @@ const SkillsPage = () => {
                     <SkillGroup
                         groupName="Database"
                         group={Skills.Database}
-                        delay={1.5}
+                        delay={1.25}
                     />
                     <SkillGroup
                         groupName="Technologies"
                         group={Skills.Technologies}
-                        delay={3}
+                        delay={2.75}
                     />
                 </div>
                 <div className={styles.skillsColumn}>
                     <SkillGroup
                         groupName="Cloud"
                         group={Skills.Cloud}
-                        delay={1}
+                        delay={0.75}
                     />
                     <SkillGroup
                         groupName="Other Languages"
                         group={Skills.Languages}
-                        delay={2}
+                        delay={1.75}
                     />
                     <SkillGroup
                         groupName="APIs"
                         group={Skills.APIs}
-                        delay={3.5}
+                        delay={3.25}
                     />
                 </div>
             </div>

@@ -1,4 +1,5 @@
 @import "app/variables.module.scss";
+
 .projectsWrapper {
     height: 100%;
     // border: 1px solid $light;
@@ -7,11 +8,12 @@
     justify-content: space-evenly;
     padding: 50px calc(260px - 5vw) 50px 260px;
     align-items: flex-start;
+
     .projectPreview {
         width: 47%;
         margin: 10px 0;
         aspect-ratio: 16/9;
-        border: 2px solid #FFF;
+        border: 1px solid #FFF;
         border-radius: 10px;
         -webkit-transition-duration: 0.3s;
         transition-duration: 0.3s;
@@ -22,11 +24,13 @@
         overflow: hidden;
         cursor: pointer;
         animation: revealUp 1s ease 1s 1 normal both;
+
         &:hover {
             margin-top: 5px;
             margin-bottom: 15px;
             border-color: $middle-green-blue;
         }
+
         .bar {
             position: absolute;
             display: flex;
@@ -41,12 +45,14 @@
             padding: 40px 10px 10px;
             -webkit-transition-duration: 0.4s;
             transition-duration: 0.4s;
+
             &>div {
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 10px;
             }
+
             h4 {
                 width: 100%;
                 font-weight: 100;
@@ -62,6 +68,7 @@
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
             }
+
             p {
                 color: #fff;
                 font-size: 1em;
@@ -75,6 +82,7 @@
                 transition-duration: 0.4s;
                 transition-delay: 0.4s;
             }
+
             .projectTags {
                 display: flex;
                 justify-content: flex-end;
@@ -82,6 +90,7 @@
                 width: 100%;
                 transition-duration: 0.4s;
                 transition-delay: 0.4s;
+
                 img {
                     width: 30px;
                     height: 30px;
@@ -97,6 +106,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 100;
         transform: translateY(0px);

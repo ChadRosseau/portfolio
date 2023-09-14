@@ -53,14 +53,16 @@
     }
 
     .buttonWrapper {
-        width: 100%;
+        width: 60%;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding-top: 50px;
 
         .navButton {
-            width: 17.5%;
+            // width: 17.5%;
+            width: 30%;
 
             div {
                 width: 100%;

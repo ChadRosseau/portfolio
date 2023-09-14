@@ -77,27 +77,27 @@ const Home = () => {
                 />
             </div>
             <div className={styles.buttonWrapper}>
-                {["experience", "projects", "skills", "resume", "contact"].map(
-                    (target: string, i: number) => {
-                        return (
-                            <Link
-                                href={`/${target}`}
-                                className={styles.navButton}
+                {[
+                    //"experience",
+                    "projects",
+                    "skills",
+                    "resume",
+                    //"contact"
+                ].map((target: string, i: number) => {
+                    return (
+                        <Link href={`/${target}`} className={styles.navButton}>
+                            <div
+                                style={{
+                                    animationDelay: `${i * 0.25 + 7}s`,
+                                }}
                             >
-                                <div
-                                    style={{
-                                        animationDelay: `${i * 0.25 + 7}s`,
-                                    }}
-                                >
-                                    <p>{`${
-                                        target[0].toUpperCase() +
-                                        target.slice(1)
-                                    }`}</p>
-                                </div>
-                            </Link>
-                        );
-                    }
-                )}
+                                <p>{`${
+                                    target[0].toUpperCase() + target.slice(1)
+                                }`}</p>
+                            </div>
+                        </Link>
+                    );
+                })}
             </div>
         </main>
     );

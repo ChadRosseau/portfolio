@@ -1,0 +1,37 @@
+@import "app/variables.module.scss";
+
+.experienceWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    h3 {
+        font-size: 4rem;
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+}
+
+.underline {
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 0%;
+        height: 1px;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        background: $primary-gradient-large;
+        transition-duration: 0.2s;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}

@@ -44,7 +44,7 @@ const Home = () => {
             // Remove the event listener when component unmounts
             return () => window.removeEventListener("load", onPageLoad);
         }
-    }, [playNameAnimation]);
+    }, []);
 
     return (
         <main className={styles.main}>
@@ -70,7 +70,7 @@ const Home = () => {
                         about.
                     </p>
                 </div>
-                <Image
+                <img
                     className={styles.profileImage}
                     src="images/headshot.jpg"
                     alt="headshot"

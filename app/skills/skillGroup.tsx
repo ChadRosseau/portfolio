@@ -17,6 +17,7 @@ const SkillGroup = ({ groupName, group, delay }: SkillGroupProps) => {
                     <SkillItem
                         skill={skill}
                         delay={`${i * 0.1 + delay + 1}s`}
+                        key={i}
                     ></SkillItem>
                 );
             })}

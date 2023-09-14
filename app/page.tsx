@@ -11,21 +11,6 @@ const Home = () => {
     const [title, setTitle] = useState<string>("");
     const [name, setName] = useState<string>("");
 
-    useEffect(() => {
-        const onPageLoad = () => {
-            playNameAnimation();
-        };
-
-        // Check if the page has already loaded
-        if (document.readyState === "complete") {
-            onPageLoad();
-        } else {
-            window.addEventListener("load", onPageLoad);
-            // Remove the event listener when component unmounts
-            return () => window.removeEventListener("load", onPageLoad);
-        }
-    }, []);
-
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
     const playNameAnimation = async () => {
@@ -46,6 +31,21 @@ const Home = () => {
         }
     };
 
+    useEffect(() => {
+        const onPageLoad = () => {
+            playNameAnimation();
+        };
+
+        // Check if the page has already loaded
+        if (document.readyState === "complete") {
+            onPageLoad();
+        } else {
+            window.addEventListener("load", onPageLoad);
+            // Remove the event listener when component unmounts
+            return () => window.removeEventListener("load", onPageLoad);
+        }
+    }, [playNameAnimation]);
+
     return (
         <main className={styles.main}>
             <div className={styles.middle}>
@@ -60,17 +60,17 @@ const Home = () => {
                         applications that serve a purpose.
                     </p>
                     <p>
-                        I've spent almost a decade honing my programming skills,
-                        with a focus on fullstack web development, automation,
-                        and bringing innovative ideas to life.
+                        I&apos;ve spent almost a decade honing my programming
+                        skills, with a focus on fullstack web development,
+                        automation, and bringing innovative ideas to life.
                     </p>
                     <p>
                         Navigate this website to explore my projects, my
-                        experience, my expertise, and the ideas I'm excited
+                        experience, my expertise, and the ideas I&apos;m excited
                         about.
                     </p>
                 </div>
-                <img
+                <Image
                     className={styles.profileImage}
                     src="images/headshot.jpg"
                     alt="headshot"
@@ -85,7 +85,11 @@ const Home = () => {
                     //"contact"
                 ].map((target: string, i: number) => {
                     return (
-                        <Link href={`/${target}`} className={styles.navButton}>
+                        <Link
+                            href={`/${target}`}
+                            className={styles.navButton}
+                            key={i}
+                        >
                             <div
                                 style={{
                                     animationDelay: `${i * 0.25 + 7}s`,

@@ -29,6 +29,8 @@ export enum SkillTag {
     OpenAI = "openai",
     Maps = "google_maps",
     IEX = "iex",
+    Flutter = "flutter",
+    ReactNative = "react_native",
 }
 
 export interface Skill {
@@ -223,7 +225,7 @@ export const Skills: SkillCollection = {
         },
         {
             name: "React Native",
-            icon_url: "react",
+            icon_url: "react_native",
             proficiency: 1
         },
     ]

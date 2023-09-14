@@ -66,6 +66,7 @@ a {
 
 .textGradient {
     background: $primary-gradient-large;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

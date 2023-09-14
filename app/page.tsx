@@ -1,14 +1,59 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.scss";
 import Navbar from "@/components/navbar/navbar";
 import StarBackground from "@/components/stars/stars";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Home = () => {
+    const [title, setTitle] = useState<string>("");
+    const [name, setName] = useState<string>("");
+
+    useEffect(() => {
+        const onPageLoad = () => {
+            playNameAnimation();
+        };
+
+        // Check if the page has already loaded
+        if (document.readyState === "complete") {
+            onPageLoad();
+        } else {
+            window.addEventListener("load", onPageLoad);
+            // Remove the event listener when component unmounts
+            return () => window.removeEventListener("load", onPageLoad);
+        }
+    }, []);
+
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    const playNameAnimation = async () => {
+        await sleep(1000);
+        const intro1 = "Hi, I'm ";
+        const intro2 = "Chad.";
+        let play1 = "";
+        let play2 = "";
+        for (let i = 0; i < intro1.length; i++) {
+            await sleep(100);
+            play1 += intro1[i];
+            setTitle(play1);
+        }
+        for (let i = 0; i < intro2.length; i++) {
+            await sleep(100);
+            play2 += intro2[i];
+            setName(play2);
+        }
+    };
+
     return (
         <main className={styles.main}>
             <div className={styles.middle}>
                 <div className={styles.textContainer}>
-                    <h3>Hi, I'm Chad.</h3>
+                    <h3>
+                        {title}
+                        <span>{name}</span>
+                    </h3>
                     <p>
                         A second-year Computer Science student at the University
                         of Toronto, I spend my free time developing real-world
@@ -32,10 +77,27 @@ const Home = () => {
                 />
             </div>
             <div className={styles.buttonWrapper}>
-                <button>Experience</button>
-                <button>Projects</button>
-                <button>Skills</button>
-                <button>Resumé</button>
+                {["experience", "projects", "skills", "resume", "contact"].map(
+                    (target: string, i: number) => {
+                        return (
+                            <Link
+                                href={`/${target}`}
+                                className={styles.navButton}
+                            >
+                                <div
+                                    style={{
+                                        animationDelay: `${i * 0.25 + 7}s`,
+                                    }}
+                                >
+                                    <p>{`${
+                                        target[0].toUpperCase() +
+                                        target.slice(1)
+                                    }`}</p>
+                                </div>
+                            </Link>
+                        );
+                    }
+                )}
             </div>
         </main>
     );

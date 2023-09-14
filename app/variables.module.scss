@@ -5,8 +5,8 @@ $between-green: #0fa;
 $middle-green-blue: #0fb;
 $between-blue: #0fc;
 $primary-blue: #0fe;
-$primary-gradient-large: linear-gradient(90deg, #0f8 0%, #0fe 100%);
-$primary-gradient-small: linear-gradient(90deg, #0f8 50%, #0fe 100%);
+$primary-gradient-large: linear-gradient(45deg, #0fe 0%, #0f8 100%);
+$primary-gradient-small: linear-gradient(45deg, #0fe 50%, #0f8 100%);
 
 :export {
     primaryGreen: $primary-green;

@@ -9,9 +9,39 @@
     padding: 50px calc(260px - 5vw) 50px 260px;
     align-items: flex-start;
 
+    .filtersWrapper {
+        width: 100%;
+        padding: 10px;
+        margin: 0 15px 20px;
+        display: flex;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        border: 1px solid $light;
+        border-radius: 10px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            padding: 5px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &.active {
+                border-color: $light;
+            }
+        }
+    }
+
     .projectPreview {
         width: 47%;
-        margin: 10px 0;
+        margin: 10px 15px;
         aspect-ratio: 16/9;
         border: 1px solid #FFF;
         border-radius: 10px;
@@ -23,7 +53,7 @@
         position: relative;
         overflow: hidden;
         cursor: pointer;
-        animation: revealUp 1s ease 1s 1 normal both;
+        animation: fadeInUp 1s ease 1s 1 normal both;
 
         &:hover {
             margin-top: 5px;
@@ -101,7 +131,7 @@
     }
 }
 
-@keyframes revealUp {
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);

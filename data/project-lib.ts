@@ -39,7 +39,7 @@ export const projects: Project[] = [
     },
     {
         name: "Portfolio",
-        photo_url: "project_thumbnails/dcsn.png",
+        photo_url: "project_thumbnails/portfolio.png",
         skills: [
             SkillTag.HTML,
             SkillTag.Sass,

@@ -1,22 +1,17 @@
 @import "app/variables.module.scss";
-
 .main {
     min-height: 100vh;
     padding: 8rem 8rem 4rem 10rem;
-
     .middle {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         .textContainer {
             width: 60%;
             height: 100%;
-
             h3 {
                 font-size: 6rem;
                 margin-bottom: 30px;
-
                 span {
                     background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
                     background-clip: text;
@@ -24,26 +19,21 @@
                     -webkit-text-fill-color: transparent;
                 }
             }
-
             p {
                 margin-bottom: 30px;
                 font-size: 1.4rem;
                 animation: fadeInRight 1s ease 0s 1 normal both;
-
                 &:nth-of-type(1) {
                     animation-delay: 4s;
                 }
-
                 &:nth-of-type(2) {
                     animation-delay: 5s;
                 }
-
                 &:nth-of-type(3) {
                     animation-delay: 6s;
                 }
             }
         }
-
         .profileImage {
             width: 35%;
             border-radius: 20px;
@@ -51,7 +41,6 @@
             // aspect-ratio: 1/1;
         }
     }
-
     .buttonWrapper {
         width: 60%;
         margin: 0 auto;
@@ -59,11 +48,9 @@
         justify-content: space-between;
         align-items: center;
         padding-top: 50px;
-
         .navButton {
             // width: 17.5%;
             width: 30%;
-
             div {
                 width: 100%;
                 font-size: 1.4rem;
@@ -76,7 +63,6 @@
                 position: relative;
                 animation: fadeInUp 1s ease 0s 1 normal both;
                 margin-top: 20px;
-
                 p {
                     background: $light;
                     background-clip: text;
@@ -84,7 +70,6 @@
                     -webkit-text-fill-color: transparent;
                     text-align: center;
                 }
-
                 &::after {
                     content: "";
                     top: -2px;
@@ -100,17 +85,14 @@
                     -webkit-mask: conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0) var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat, conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat, linear-gradient(#000 0 0) padding-box no-repeat;
                     transition: .2s, -webkit-mask-position .2s .2s;
                 }
-
                 &:hover {
                     margin-top: 0px;
-
                     p {
                         background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
                         background-clip: text;
                         -webkit-background-clip: text;
                         -webkit-text-fill-color: transparent;
                     }
-
                     // border-color: $middle-green-blue;
                     &::after {
                         --_i: 100%;
@@ -128,7 +110,6 @@
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 100;
         transform: translateY(0px);
@@ -140,7 +121,6 @@
         opacity: 0;
         transform: translateX(20px);
     }
-
     to {
         opacity: 100;
         transform: translateX(0px);
@@ -152,9 +132,47 @@
         opacity: 0;
         transform: translateX(-20px);
     }
-
     to {
         opacity: 100;
         transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        padding: 100px 3rem;
+        .middle {
+            padding-top: 3rem;
+            flex-direction: column-reverse;
+            .textContainer {
+                width: 100%;
+                height: unset;
+                text-align: center;
+                h3 {
+                    font-size: 3rem;
+                    margin: 50px 0;
+                }
+                p {
+                    font-size: 0.9rem;
+                    animation: fadeInUp 1s ease 0s 1 normal both;
+                }
+            }
+            .profileImage {
+                width: 100%;
+                animation: fadeInUp 1s ease 0s 1 normal both;
+            }
+        }
+        .buttonWrapper {
+            width: 100%;
+            flex-direction: column;
+            .navButton {
+                width: 80%;
+                div {
+                    &:hover {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
     }
 }

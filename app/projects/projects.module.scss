@@ -9,6 +9,11 @@
     padding: 50px calc(260px - 5vw) 50px 260px;
     align-items: flex-start;
 
+    .filtersLabel {
+        margin-bottom: 20px;
+        font-weight: 200;
+    }
+
     .filtersWrapper {
         width: 100%;
         padding: 10px;
@@ -140,5 +145,21 @@
     to {
         opacity: 100;
         transform: translateY(0px);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .projectsWrapper {
+        padding: 150px 1em;
+
+        .projectPreview {
+            width: 100%;
+
+            .bar {
+                h4 {
+                    font-size: 1.3em;
+                }
+            }
+        }
     }
 }

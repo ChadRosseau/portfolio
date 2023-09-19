@@ -6,8 +6,10 @@ import styles from "./projects.module.scss";
 import { Project, projects } from "@/data/project-lib";
 import { Skill, SkillTag, Skills } from "@/data/skill-lib";
 import { useSearchParams } from "next/navigation";
+import useCheckMobileScreen from "@/hooks/screenWidth";
 
 const ProjectsPage = () => {
+    const isMobile = useCheckMobileScreen();
     const [filters, setFilters] = useState<string[]>([]);
 
     const searchParams = useSearchParams();
@@ -35,6 +37,10 @@ const ProjectsPage = () => {
 
     return (
         <div className={styles.projectsWrapper}>
+            <h3 className={`${styles.filtersLabel} textGradient`}>
+                {isMobile ? "Swipe" : "Scroll"} and {isMobile ? "Tap" : "Click"}{" "}
+                to apply filters
+            </h3>
             <div className={styles.filtersWrapper}>
                 {Object.values(Skills)
                     .flat(1)
@@ -67,6 +73,7 @@ const ProjectsPage = () => {
                         <ProjectPreview
                             project={project}
                             delay={`${makeDelay(i)}s`}
+                            isMobile={isMobile}
                             key={i}
                         />
                     );

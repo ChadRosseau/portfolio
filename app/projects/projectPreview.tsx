@@ -6,9 +6,10 @@ import { CSSProperties } from "react";
 type ProjectPreviewProps = {
     project: Project;
     delay: string;
+    isMobile: boolean;
 };
 
-const ProjectPreview = ({ project, delay }: ProjectPreviewProps) => {
+const ProjectPreview = ({ project, delay, isMobile }: ProjectPreviewProps) => {
     const style: CSSProperties = {
         ["animation-delay" as any]: delay,
         ["background-image" as any]: `url('${project.photo_url}`,
@@ -21,7 +22,7 @@ const ProjectPreview = ({ project, delay }: ProjectPreviewProps) => {
                     <h4>{project.name}</h4>
                     <div className={styles.projectTags}>
                         {project.skills.map((skill: SkillTag, i: number) => {
-                            return i < 5 ? (
+                            return (isMobile ? i < 3 : i < 5) ? (
                                 <img
                                     src={`skills_icons/color/${skill}.svg`}
                                     alt={skill + " logo"}

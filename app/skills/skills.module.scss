@@ -115,3 +115,21 @@
         transform: translateY(0px);
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .skillsWrapper {
+        padding: 150px 3rem;
+
+        .columnWrapper {
+            flex-direction: column;
+
+            .skillsColumn {
+                width: 100%;
+
+                h4 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

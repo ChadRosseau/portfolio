@@ -3,11 +3,7 @@
 .projectsWrapper {
     height: 100%;
     // border: 1px solid $light;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     padding: 50px calc(260px - 5vw) 50px 260px;
-    align-items: flex-start;
 
     .filtersLabel {
         margin-bottom: 20px;
@@ -17,7 +13,7 @@
     .filtersWrapper {
         width: 100%;
         padding: 10px;
-        margin: 0 15px 20px;
+        margin: 0 0 20px;
         display: flex;
         overflow-x: scroll;
         -ms-overflow-style: none;
@@ -44,96 +40,103 @@
         }
     }
 
-    .projectPreview {
-        width: 45%;
-        margin: 10px 0;
-        aspect-ratio: 16/9;
-        border: 1px solid #FFF;
-        border-radius: 10px;
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        animation: fadeInUp 1s ease 1s 1 normal both;
+    .projectPreviews {
+      display: grid;
+      gap: 4%;
+      width: 100%;
+      grid-template-columns: 48% 48%;
 
-        &:hover {
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border-color: $middle-green-blue;
-        }
+      .projectPreview {
+          width: 100%;
+          margin: 10px 0;
+          aspect-ratio: 16/9;
+          border: 1px solid #FFF;
+          border-radius: 10px;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+          animation: fadeInUp 1s ease 1s 1 normal both;
 
-        .bar {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 135px;
-            background: rgb(0, 45, 115);
-            background: linear-gradient(0deg, rgba(4, 12, 24, 1) 0%, rgba(4, 12, 24, 0.65) 60%, rgba(4, 12, 24, 0) 100%);
-            padding: 40px 10px 10px;
-            -webkit-transition-duration: 0.4s;
-            transition-duration: 0.4s;
+          &:hover {
+              margin-top: 5px;
+              margin-bottom: 15px;
+              border-color: $middle-green-blue;
+          }
 
-            &>div {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-            }
+          .bar {
+              position: absolute;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 135px;
+              background: rgb(0, 45, 115);
+              background: linear-gradient(0deg, rgba(4, 12, 24, 1) 0%, rgba(4, 12, 24, 0.65) 60%, rgba(4, 12, 24, 0) 100%);
+              padding: 40px 10px 10px;
+              -webkit-transition-duration: 0.4s;
+              transition-duration: 0.4s;
 
-            h4 {
-                width: 100%;
-                font-weight: 100;
-                color: rgba(255, 255, 255, 0.9);
-                font-size: 1.6em;
-                line-height: 1.1em;
-                font-family: "Roboto Condensed", sans-serif;
-                margin-bottom: 0;
-                -webkit-transition-duration: 0.4s;
-                transition-duration: 0.4s;
-                display: -webkit-box;
-                overflow: hidden;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-            }
+              &>div {
+                  width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  margin-bottom: 10px;
+              }
 
-            p {
-                color: #fff;
-                font-size: 1em;
-                line-height: 1.4em;
-                font-family: "Roboto Condensed", sans-serif;
-                -webkit-transition-duration: 0.4s;
-                transition-duration: 0.4s;
-                overflow: hidden;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                transition-duration: 0.4s;
-                transition-delay: 0.4s;
-            }
+              h4 {
+                  width: 100%;
+                  font-weight: 100;
+                  color: rgba(255, 255, 255, 0.9);
+                  font-size: 25px;
+                  line-height: 1.1em;
+                  font-family: "Roboto Condensed", sans-serif;
+                  margin-bottom: 0;
+                  -webkit-transition-duration: 0.4s;
+                  transition-duration: 0.4s;
+                  display: -webkit-box;
+                  overflow: hidden;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+              }
 
-            .projectTags {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                width: 100%;
-                transition-duration: 0.4s;
-                transition-delay: 0.4s;
+              p {
+                  color: #fff;
+                  font-size: 16px;
+                  line-height: 1.4em;
+                  font-family: "Roboto Condensed", sans-serif;
+                  -webkit-transition-duration: 0.4s;
+                  transition-duration: 0.4s;
+                  overflow: hidden;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  transition-duration: 0.4s;
+                  transition-delay: 0.4s;
+              }
 
-                img {
-                    width: 30px;
-                    height: 30px;
-                    margin-left: 5px;
-                }
-            }
-        }
-    }
+              .projectTags {
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                  width: 100%;
+                  transition-duration: 0.4s;
+                  transition-delay: 0.4s;
+
+                  img {
+                      width: 30px;
+                      height: 30px;
+                      margin-left: 5px;
+                  }
+              }
+          }
+      }
+  }
 }
 
 @keyframes fadeInUp {
@@ -163,3 +166,14 @@
         }
     }
 }
+
+@media only screen and (min-width: 1900px) {
+  .projectsWrapper {
+    font-size: unset;
+    .projectPreviews {
+      grid-template-columns: 31% 31% 31%;
+      gap: 3.5%;
+    }
+  }
+}
+

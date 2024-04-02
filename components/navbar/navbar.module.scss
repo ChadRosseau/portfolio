@@ -1,120 +1,128 @@
 @import "app/variables.module.scss";
 .nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px calc((5vw - 50px) / 2) 50px;
+  width: 5vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-left: 1px solid $light;
+  border-right: 1px solid $light;
+  background: $dark;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  z-index: 100;
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  .button {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px calc((5vw - 50px) / 2) 50px;
-    width: 5vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-left: 1px solid $light;
-    border-right: 1px solid $light;
-    background: $dark;
-    overflow: hidden;
-    transition-duration: 0.5s;
-    z-index: 100;
-    .logo {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 200;
+    cursor: pointer;
+    white-space: nowrap;
+    .icon {
+      margin-right: calc((5vw - 50px) / 2);
     }
-    .button {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        font-size: 2em;
-        font-weight: 200;
-        cursor: pointer;
-        white-space: nowrap;
-        .icon {
-            margin-right: 20px;
-        }
-        &.active {
-            background: $primary-gradient-small;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            p {
-                text-shadow: 0 0 8px $middle-green-blue;
-            }
-        }
-        &:hover {
-            p {
-                text-shadow: 0 0 8px $middle-green-blue;
-            }
-        }
-    }
-    .pageLabelWrapper {
-        // display: flex;
-        // justify-content: center;
-        // align-items: flex-end;
-        width: 5vw;
-        height: 200px;
-        position: absolute;
-        bottom: 50px;
-        left: 0;
-        // border: 1px solid #FFF;
-        p {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%) rotate(-90deg);
-            font-size: 30px;
-            font-weight: 200;
-            margin: 0;
-            width: 160px;
-            transition-duration: 1s;
-        }
-    }
-    p {
-        transition-duration: 0.3s;
+    &.active {
+      background: $primary-gradient-small;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      p {
+        text-shadow: 0 0 8px $middle-green-blue;
+      }
     }
     &:hover {
-        width: 260px;
-        .pageLabel {
-            // opacity: 0;
-            left: 15%;
-        }
+      p {
+        text-shadow: 0 0 8px $middle-green-blue;
+      }
     }
+  }
+  .pageLabelWrapper {
+    // display: flex;
+    // justify-content: center;
+    // align-items: flex-end;
+    width: 5vw;
+    height: 200px;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    // border: 1px solid #FFF;
+    p {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100%) rotate(-90deg);
+      font-size: 30px;
+      font-weight: 200;
+      margin: 0;
+      width: 160px;
+      transition-duration: 1s;
+    }
+  }
+  p {
+    transition-duration: 0.3s;
+  }
+  &:hover {
+    width: 260px;
+    .pageLabel {
+      // opacity: 0;
+      left: 15%;
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .nav {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        height: unset;
-        padding: 20px;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid $light;
-        .logo {
-            padding-right: 10px;
-            transform: translateX(-10px);
-            box-sizing: content-box;
-            margin: 0;
-        }
-        .button {
-            margin: 0;
-            .icon {
-                width: 40px;
-                height: 40px;
-                margin: 0;
-            }
-            p {
-                display: none;
-            }
-        }
-        &:hover {
-            width: 100%;
-        }
-        .pageLabelWrapper {
-            display: none;
-        }
+  .nav {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: unset;
+    padding: 20px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid $light;
+    .logo {
+      padding-right: 10px;
+      transform: translateX(-10px);
+      box-sizing: content-box;
+      margin: 0;
     }
+    .button {
+      margin: 0;
+      .icon {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+      }
+      p {
+        display: none;
+      }
+    }
+    &:hover {
+      width: 100%;
+    }
+    .pageLabelWrapper {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .nav {
+    &:hover {
+      width: 450px;
+    }
+  }
 }

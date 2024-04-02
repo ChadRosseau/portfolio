@@ -1,135 +1,143 @@
 @import "app/variables.module.scss";
 
 .skillsWrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px calc(260px - 5vw) 60px 260px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  h5 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 200;
+    animation: fadeInUp 1s ease 6s 1 normal both;
+  }
+
+  .columnWrapper {
     width: 100%;
-    min-height: 100vh;
-    padding: 60px calc(260px - 5vw) 60px 260px;
     display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 100%;
 
-    h5 {
-        margin-top: 30px;
-        text-align: center;
-        font-size: 1.5em;
-        font-weight: 200;
-        animation: fadeInUp 1s ease 6s 1 normal both;
-    }
+    .skillsColumn {
+      width: 27%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
-    .columnWrapper {
-        width: 100%;
+      .skillGroup {
         display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 50px;
 
-        .skillsColumn {
-            width: 27%;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-
-            .skillGroup {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                margin-bottom: 50px;
-
-                h4 {
-                    font-size: 2em;
-                    font-weight: 100;
-                    opacity: 0;
-                    animation: fadeInUp 0.5s ease 0.5s 1 normal both;
-                }
-
-                .skill {
-                    padding: 1px;
-                    background: rgba(255, 255, 255, 0.1);
-                    border-radius: 5px;
-                    // border: 1px solid $light;
-                    margin: 8px 0;
-                    animation: fadeInUp 1s ease 0s 1 normal both;
-                    transition-duration: 0.3s;
-
-                    .skillInner {
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        border-radius: 5px;
-                        padding: 5px 10px;
-                        position: relative;
-                        box-sizing: border-box;
-                        background: #1f1f1f;
-                    }
-
-                    cursor: pointer;
-
-                    &:hover {
-                        margin-top: 3px;
-                        margin-bottom: 13px;
-                        background: linear-gradient(45deg, #0f8 0%, #0fe 100%);
-                    }
-
-                    img {
-                        width: 30px;
-                        height: 30px;
-                    }
-
-                    p {
-                        display: inline-block;
-                        margin-left: 10px;
-                    }
-
-                    .proficiency {
-                        position: absolute;
-                        right: 15px;
-                        top: 0;
-                        display: flex;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-
-                        .dot {
-                            width: 7px;
-                            height: 7px;
-                            border-radius: 50%;
-                            margin-left: 15px;
-                        }
-                    }
-                }
-            }
+        h4 {
+          font-size: 2em;
+          font-weight: 100;
+          opacity: 0;
+          animation: fadeInUp 0.5s ease 0.5s 1 normal both;
         }
+
+        .skill {
+          padding: 2px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 5px;
+          // border: 1px solid $light;
+          margin: 8px 0;
+          animation: fadeInUp 1s ease 0s 1 normal both;
+          transition-duration: 0.3s;
+
+          .skillInner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            position: relative;
+            box-sizing: border-box;
+            background: #1f1f1f;
+          }
+
+          cursor: pointer;
+
+          &:hover {
+            margin-top: 3px;
+            margin-bottom: 13px;
+            background: linear-gradient(45deg, #0f8 0%, #0fe 100%);
+          }
+
+          img {
+            width: 30px;
+            height: 30px;
+          }
+
+          p {
+            display: inline-block;
+            margin-left: 10px;
+          }
+
+          .proficiency {
+            position: absolute;
+            right: 15px;
+            top: 0;
+            display: flex;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .dot {
+              width: 0.4rem;
+              height: 0.4rem;
+              border-radius: 50%;
+              margin-left: 15px;
+            }
+          }
+        }
+      }
     }
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 100;
-        transform: translateY(0px);
-    }
+  to {
+    opacity: 100;
+    transform: translateY(0px);
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .skillsWrapper {
-        padding: 150px 3rem;
+  .skillsWrapper {
+    padding: 150px 3rem;
 
-        .columnWrapper {
-            flex-direction: column;
+    .columnWrapper {
+      flex-direction: column;
 
-            .skillsColumn {
-                width: 100%;
+      .skillsColumn {
+        width: 100%;
 
-                h4 {
-                    text-align: center;
-                }
-            }
+        h4 {
+          text-align: center;
         }
+      }
     }
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .skill {
+    p {
+      font-weight: 200;
+    }
+  }
 }

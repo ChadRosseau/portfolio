@@ -1,6 +1,5 @@
 'use client';
 import {
-  ChevronLeft,
   ChevronLeftSquare,
   ChevronRightSquare,
   Github, UserCog, Users
@@ -30,7 +29,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
     let newIdx = currentProjectIdx + offset;
     if (newIdx == -1) newIdx = projectIds.length - 1;
     else if (newIdx == projectIds.length) newIdx = 0;
-    setTimeout(() => router.push(`/project/${projectIds[newIdx]}`), 250);
+    setTimeout(() => router.push(`/project/${projectIds[newIdx]}`), 600);
   };
 
   const formatDate = (date: Date | null): string => {
@@ -47,7 +46,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
   }
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 250)
+    setTimeout(() => setVisible(true), 300)
   }, [])
 
   return (
@@ -73,14 +72,14 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
             {project.description.map((val, i) => <p>{val}{i != project.description.length - 1 ? <span><br /><br /></span> : ''}</p>)}
           </div>
           <div className="w-full h-[8%] flex justify-between">
-            <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300")}>
-              <Link href={project.link}>
+            <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300 delay-150")}>
+              <Link href={project.link ? project.link : ''} className={clsx(!project.link && "pointer-events-none")}>
                 <p className="textGradient text-2xl">
-                  {project.name} - {project.link}
+                  {project.name} {project.link && '- ' + project.link}
                 </p>
               </Link>
             </div>
-            <div className={clsx(!visible && "translate-y-6 opacity-0", "rounded-2xl h-full border border-[#fff] px-20 flex-grow flex justify-center items-center transition-all duration-300")}>
+            <div className={clsx(!visible && "translate-y-6 opacity-0", "rounded-2xl h-full border border-[#fff] px-5 flex-grow flex justify-center items-center transition-all duration-300 delay-75")}>
               <p className="text-nowrap text-2xl">
                 {formatDate(project.startDate)} - {formatDate(project.endDate)}
               </p>
@@ -88,14 +87,16 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
           </div>
         </div>
         <div className="h-full flex flex-col w-[10%] justify-between items-center">
-          <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300")}>
-            <Github
-              size="5em"
-              strokeWidth={1}
-              stroke="#FFF"
-            />
+          <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300 delay-150")}>
+            <Link href={project.github ? project.github : ''} className={clsx(!project.github && "pointer-events-none opacity-50")}>
+              <Github
+                size="5em"
+                strokeWidth={1}
+                stroke="#FFF"
+              />
+            </Link>
           </div>
-          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start overflow-scroll transition-all duration-300")}>
+          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start overflow-scroll transition-all duration-300 delay-75")}>
             {project.skills
               .map((skillTag: SkillTag, i) => {
                 const skill = allSkillList.filter((skill) => skill.icon_url == skillTag)[0];
@@ -111,7 +112,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
                 );
               })}
           </div>
-          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300")}>
+          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-[225ms]")}>
             <p className="text-4xl">
               {project.contributors}
             </p>
@@ -122,7 +123,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
               stroke="#FFF"
             />
           </div>
-          <div className={clsx(!visible && "translate-x-6 translate-y-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300")}>
+          <div className={clsx(!visible && "translate-x-6 translate-y-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-300")}>
             <p className="text-2xl">
               {project.users}
             </p>
@@ -135,20 +136,6 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
           </div>
         </div>
       </div>
-      {/*
-         
-      <div className="flex w-full justify-between">
-        <Link href={generateOffsetLink(-1)}>
-
-          <div>Prev</div>
-        </Link>
-        <Link href={generateOffsetLink(1)}>
-
-          <div>Next</div>
-        </Link>
-
-      </div>
-         * */}
     </div>
   );
 };

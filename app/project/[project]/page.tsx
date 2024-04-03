@@ -2,7 +2,7 @@
 import {
   ChevronLeftSquare,
   ChevronRightSquare,
-  Github, UserCog, Users
+  Github, HelpCircle, UserCog, Users
 } from "lucide-react";
 import { projects } from '@/data/project-lib';
 import Image from 'next/image';
@@ -11,11 +11,13 @@ import { Skill, SkillTag, Skills } from "@/data/skill-lib";
 import clsx from 'clsx';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import HelpOverlay from "@/components/HelpOverlay";
 
 const ProjectPage = ({ params }: { params: { project: string } }) => {
   const router = useRouter();
   const project = projects[params.project];
   let [visible, setVisible] = useState(false);
+  let [help, setHelp] = useState(false);
 
   const allSkillList: Skill[] = [];
   Object.values(Skills).forEach(skillList => {
@@ -52,13 +54,13 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
   return (
     <div className="ml-[5vw] px-48 py-10 w-[calc(100%-5vw)] h-screen relative">
       <ChevronLeftSquare
-        className="absolute bottom-1/2 left-[2rem] stroke-light hover:stroke-gb-3 cursor-pointer"
+        className="absolute bottom-1/2 left-8 stroke-light hover:stroke-gb-3 cursor-pointer"
         size="8em"
         strokeWidth={0.75}
         onClick={() => navigateToProject(-1)}
       />
       <ChevronRightSquare
-        className="absolute bottom-1/2 right-[2rem] stroke-light hover:stroke-gb-3 cursor-pointer"
+        className="absolute bottom-1/2 right-8 stroke-light hover:stroke-gb-3 cursor-pointer"
         size="8em"
         strokeWidth={0.75}
         onClick={() => navigateToProject(1)}
@@ -67,27 +69,31 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
         <div className="h-full flex flex-col w-[88%] justify-between">
           <div className={clsx(!visible && "-translate-x-6 -translate-y-6 opacity-0", "rounded-2xl overflow-hidden relative aspect-video w-full h-auto border-[#fff] border transition-all duration-300")}>
             <Image src={'/' + project.photo_url} fill alt="hi" />
+            <HelpOverlay active={help} text="Project Preview" />
           </div>
-          <div className={clsx(!visible && "-translate-x-6 opacity-0", "rounded-2xl w-full h-[22%] border border-[#fff] overflow-scroll p-4 text-lg transition-all duration-300")}>
+          <div className={clsx(!visible && "-translate-x-6 opacity-0", help ? "overflow-hidden" : "overflow-scroll", "rounded-2xl w-full h-[22%] border border-[#fff] p-4 text-lg transition-all duration-300 relative")}>
             {project.description.map((val, i) => <p>{val}{i != project.description.length - 1 ? <span><br /><br /></span> : ''}</p>)}
+            <HelpOverlay active={help} text="Description" />
           </div>
           <div className="w-full h-[8%] flex justify-between">
-            <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300 delay-150")}>
+            <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300 delay-150 relative overflow-hidden")}>
               <Link href={project.link ? project.link : ''} className={clsx(!project.link && "pointer-events-none")}>
                 <p className="textGradient text-2xl">
                   {project.name} {project.link && '- ' + project.link}
                 </p>
               </Link>
+              <HelpOverlay active={help} text={project.link ? "Name + Link" : "Name"} />
             </div>
-            <div className={clsx(!visible && "translate-y-6 opacity-0", "rounded-2xl h-full border border-[#fff] px-5 flex-grow flex justify-center items-center transition-all duration-300 delay-75")}>
+            <div className={clsx(!visible && "translate-y-6 opacity-0", "rounded-2xl h-full border border-[#fff] px-5 flex-grow flex justify-center items-center transition-all duration-300 delay-75 relative overflow-hidden")}>
               <p className="text-nowrap text-2xl">
                 {formatDate(project.startDate)} - {formatDate(project.endDate)}
               </p>
+              <HelpOverlay active={help} text="Duration" />
             </div>
           </div>
         </div>
         <div className="h-full flex flex-col w-[10%] justify-between items-center">
-          <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300 delay-150")}>
+          <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300 delay-150 relative overflow-hidden")}>
             <Link href={project.github ? project.github : ''} className={clsx(!project.github && "pointer-events-none opacity-50")}>
               <Github
                 size="5em"
@@ -95,8 +101,9 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
                 stroke="#FFF"
               />
             </Link>
+            <HelpOverlay active={help} text="GitHub Link" wrap />
           </div>
-          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start overflow-scroll transition-all duration-300 delay-75")}>
+          <div className={clsx(!visible && "translate-x-6 opacity-0", help ? "overflow-hidden" : "overflow-scroll", "rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start transition-all duration-300 delay-75 relative overflow-hidden")}>
             {project.skills
               .map((skillTag: SkillTag, i) => {
                 const skill = allSkillList.filter((skill) => skill.icon_url == skillTag)[0];
@@ -111,8 +118,9 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
                   </div>
                 );
               })}
+            <HelpOverlay active={help} text="Skills Used" rotate />
           </div>
-          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-[225ms]")}>
+          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-[225ms] relative overflow-hidden")}>
             <p className="text-4xl">
               {project.contributors}
             </p>
@@ -122,8 +130,9 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
               strokeWidth={2}
               stroke="#FFF"
             />
+            <HelpOverlay active={help} text="Devs" />
           </div>
-          <div className={clsx(!visible && "translate-x-6 translate-y-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-300")}>
+          <div className={clsx(!visible && "translate-x-6 translate-y-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300 delay-300 relative overflow-hidden")}>
             <p className="text-2xl">
               {project.users}
             </p>
@@ -133,9 +142,16 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
               strokeWidth={2}
               stroke="#FFF"
             />
+            <HelpOverlay active={help} text="Users" />
           </div>
         </div>
       </div>
+      <HelpCircle
+        className={clsx(help && "stroke-gb-3", "absolute bottom-8 right-8 stroke-light hover:stroke-gb-3 cursor-pointer")}
+        size="4em"
+        strokeWidth={1.5}
+        onClick={() => setHelp(!help)}
+      />
     </div>
   );
 };

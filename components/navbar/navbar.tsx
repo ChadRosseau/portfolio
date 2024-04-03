@@ -34,7 +34,6 @@ const Navbar = () => {
             className={styles.icon}
             size="3.3rem"
             strokeWidth={1}
-            stroke={pathname == "/" ? "#00ffbb" : "#FFF"}
           />
           <p>Home</p>
         </div>
@@ -49,21 +48,19 @@ const Navbar = () => {
             className={styles.icon}
             size="3.3rem"
             strokeWidth={1}
-            stroke={pathname == "/experience" ? "#00ffbb" : "#FFF"}
           />
           <p>Experience</p>
         </div>
       </Link>
       <Link href="/projects">
         <div
-          className={`${styles.button} ${pathname == "/projects" ? styles.active : ""
+          className={`${styles.button} ${(pathname == "/projects" || pathname.split('/')[1] == 'project') ? styles.active : ""
             }`}
         >
           <FolderGit2
             className={styles.icon}
             size="3.3rem"
             strokeWidth={1}
-            stroke={pathname == "/projects" ? "#00ffbb" : "#FFF"}
           />
           <p>Projects</p>
         </div>
@@ -77,7 +74,6 @@ const Navbar = () => {
             className={styles.icon}
             size="3.3rem"
             strokeWidth={1}
-            stroke={pathname == "/skills" ? "#00ffbb" : "#FFF"}
           />
           <p>Skills</p>
         </div>
@@ -92,7 +88,6 @@ const Navbar = () => {
             className={styles.icon}
             size="3.3rem"
             strokeWidth={1}
-            stroke={pathname == "/about" ? "#00ffbb" : "#FFF"}
           />
           <p>About Me</p>
         </div>

@@ -10,8 +10,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  border-left: 1px solid $light;
-  border-right: 1px solid $light;
+  border-left: 1px solid $dark4;
+  border-right: 1px solid $dark4;
   background: $dark;
   overflow: hidden;
   transition-duration: 0.5s;
@@ -30,22 +30,22 @@
     font-weight: 200;
     cursor: pointer;
     white-space: nowrap;
+    color: $dark4;
+    transition-duration: 0.3s;
     .icon {
       margin-right: calc((5vw - 50px) / 2);
     }
     &.active {
-      background: $primary-gradient-small;
+      background: $primary-gradient-large;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      p {
-        text-shadow: 0 0 8px $middle-green-blue;
+      .icon {
+        color: $primary-blue;
       }
     }
     &:hover {
-      p {
-        text-shadow: 0 0 8px $middle-green-blue;
-      }
+      color: $light;
     }
   }
   .pageLabelWrapper {
@@ -69,9 +69,6 @@
       width: 160px;
       transition-duration: 1s;
     }
-  }
-  p {
-    transition-duration: 0.3s;
   }
   &:hover {
     width: 260px;

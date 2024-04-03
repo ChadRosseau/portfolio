@@ -8,6 +8,7 @@
     .filtersLabel {
         margin-bottom: 20px;
         font-weight: 200;
+        text-align: center;
     }
 
     .filtersWrapper {
@@ -18,7 +19,8 @@
         overflow-x: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        border: 1px solid $light;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: $dark2;
         border-radius: 10px;
 
         &::-webkit-scrollbar {
@@ -42,9 +44,10 @@
 
     .projectPreviews {
       display: grid;
-      gap: 4%;
       width: 100%;
       grid-template-columns: 48% 48%;
+      row-gap: 20px;
+      column-gap: 4%;
 
       .projectPreview {
           width: 100%;

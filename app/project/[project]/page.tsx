@@ -1,4 +1,8 @@
+'use client';
 import {
+  ChevronLeft,
+  ChevronLeftSquare,
+  ChevronRightSquare,
   Github, UserCog, Users
 } from "lucide-react";
 import { projects } from '@/data/project-lib';
@@ -6,24 +10,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Skill, SkillTag, Skills } from "@/data/skill-lib";
 import clsx from 'clsx';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const ProjectPage = ({ params }: { params: { project: string } }) => {
+  const router = useRouter();
   const project = projects[params.project];
+  let [visible, setVisible] = useState(false);
 
   const allSkillList: Skill[] = [];
   Object.values(Skills).forEach(skillList => {
     skillList.forEach(skill => allSkillList.push(skill))
   })
 
-  const generateOffsetLink = (offset: number) => {
+  const navigateToProject = (offset: number) => {
+    setVisible(false);
     const projectIds = Object.keys(projects);
     const currentProjectIdx = projectIds.indexOf(params.project);
     let newIdx = currentProjectIdx + offset;
-
     if (newIdx == -1) newIdx = projectIds.length - 1;
     else if (newIdx == projectIds.length) newIdx = 0;
-
-    return `/project/${projectIds[newIdx]}`;
+    setTimeout(() => router.push(`/project/${projectIds[newIdx]}`), 250);
   };
 
   const formatDate = (date: Date | null): string => {
@@ -39,25 +46,41 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
     return `${month} ${year}`;
   }
 
+  useEffect(() => {
+    setTimeout(() => setVisible(true), 250)
+  }, [])
+
   return (
-    <div className="ml-[5vw] px-48 py-10 w-[calc(100%-5vw)] h-screen">
+    <div className="ml-[5vw] px-48 py-10 w-[calc(100%-5vw)] h-screen relative">
+      <ChevronLeftSquare
+        className="absolute bottom-1/2 left-[2rem] stroke-light hover:stroke-gb-3 cursor-pointer"
+        size="8em"
+        strokeWidth={0.75}
+        onClick={() => navigateToProject(-1)}
+      />
+      <ChevronRightSquare
+        className="absolute bottom-1/2 right-[2rem] stroke-light hover:stroke-gb-3 cursor-pointer"
+        size="8em"
+        strokeWidth={0.75}
+        onClick={() => navigateToProject(1)}
+      />
       <div className="flex justify-between h-[calc(0.7*(95vw-18rem))] w-full">
         <div className="h-full flex flex-col w-[88%] justify-between">
-          <div className="rounded-2xl overflow-hidden relative aspect-video w-full h-auto border-[#fff] border">
+          <div className={clsx(!visible && "-translate-x-6 -translate-y-6 opacity-0", "rounded-2xl overflow-hidden relative aspect-video w-full h-auto border-[#fff] border transition-all duration-300")}>
             <Image src={'/' + project.photo_url} fill alt="hi" />
           </div>
-          <div className="rounded-2xl w-full h-[22%] border border-[#fff] overflow-scroll p-4 text-lg">
+          <div className={clsx(!visible && "-translate-x-6 opacity-0", "rounded-2xl w-full h-[22%] border border-[#fff] overflow-scroll p-4 text-lg transition-all duration-300")}>
             {project.description.map((val, i) => <p>{val}{i != project.description.length - 1 ? <span><br /><br /></span> : ''}</p>)}
           </div>
-          <div className='w-full h-[8%] flex justify-between'>
-            <div className="rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center">
+          <div className="w-full h-[8%] flex justify-between">
+            <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300")}>
               <Link href={project.link}>
                 <p className="textGradient text-2xl">
                   {project.name} - {project.link}
                 </p>
               </Link>
             </div>
-            <div className="rounded-2xl h-full border border-[#fff] px-20 flex-grow flex justify-center items-center">
+            <div className={clsx(!visible && "translate-y-6 opacity-0", "rounded-2xl h-full border border-[#fff] px-20 flex-grow flex justify-center items-center transition-all duration-300")}>
               <p className="text-nowrap text-2xl">
                 {formatDate(project.startDate)} - {formatDate(project.endDate)}
               </p>
@@ -65,14 +88,14 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
           </div>
         </div>
         <div className="h-full flex flex-col w-[10%] justify-between items-center">
-          <div className="rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center">
+          <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300")}>
             <Github
               size="5em"
               strokeWidth={1}
               stroke="#FFF"
             />
           </div>
-          <div className="rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start overflow-scroll">
+          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-2/3 h-[65%] border border-[#fff] flex flex-col items-center p-5 justify-start overflow-scroll transition-all duration-300")}>
             {project.skills
               .map((skillTag: SkillTag, i) => {
                 const skill = allSkillList.filter((skill) => skill.icon_url == skillTag)[0];
@@ -88,7 +111,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
                 );
               })}
           </div>
-          <div className="rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center">
+          <div className={clsx(!visible && "translate-x-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300")}>
             <p className="text-4xl">
               {project.contributors}
             </p>
@@ -99,7 +122,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
               stroke="#FFF"
             />
           </div>
-          <div className="rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center">
+          <div className={clsx(!visible && "translate-x-6 translate-y-6 opacity-0", "rounded-2xl w-full h-[8%] border border-[#fff] flex justify-center items-center transition-all duration-300")}>
             <p className="text-2xl">
               {project.users}
             </p>

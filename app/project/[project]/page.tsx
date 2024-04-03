@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import HelpOverlay from "@/components/HelpOverlay";
+import styles from "./project.module.scss";
 
 const ProjectPage = ({ params }: { params: { project: string } }) => {
   const router = useRouter();
@@ -52,7 +53,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
   }, [])
 
   return (
-    <div className="ml-[5vw] px-48 py-10 w-[calc(100%-5vw)] h-screen relative">
+    <div className="ml-[5vw] px-48 py-10 w-[calc(100%-5vw)] h-screen relative 2xl:px-60">
       <ChevronLeftSquare
         className="absolute bottom-1/2 left-8 stroke-light hover:stroke-gb-3 cursor-pointer"
         size="8em"
@@ -65,19 +66,19 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
         strokeWidth={0.75}
         onClick={() => navigateToProject(1)}
       />
-      <div className="flex justify-between h-[calc(0.7*(95vw-18rem))] w-full">
+      <div className="flex justify-between h-[calc(0.7*(95vw-18rem))] w-full 2xl:h-[calc(0.7*(95vw-26rem))]">
         <div className="h-full flex flex-col w-[88%] justify-between">
           <div className={clsx(!visible && "-translate-x-6 -translate-y-6 opacity-0", "rounded-2xl overflow-hidden relative aspect-video w-full h-auto border-[#fff] border transition-all duration-300")}>
             <Image src={'/' + project.photo_url} fill alt="hi" />
             <HelpOverlay active={help} text="Project Preview" />
           </div>
-          <div className={clsx(!visible && "-translate-x-6 opacity-0", help ? "overflow-hidden" : "overflow-scroll", "rounded-2xl w-full h-[22%] border border-[#fff] p-4 text-lg transition-all duration-300 relative")}>
+          <div className={clsx(styles.projectDescription, !visible && "-translate-x-6 opacity-0", help && "overflow-hidden", "rounded-2xl w-full h-[22%] border border-[#fff] p-4 text-lg transition-all duration-300 relative")}>
             {project.description.map((val, i) => <p>{val}{i != project.description.length - 1 ? <span><br /><br /></span> : ''}</p>)}
             <HelpOverlay active={help} text="Description" />
           </div>
           <div className="w-full h-[8%] flex justify-between">
             <div className={clsx(!visible && "-translate-x-6 translate-y-6 opacity-0", "rounded-2xl mr-5 h-full border border-[#fff] flex px-5 justify-start items-center transition-all duration-300 delay-150 relative overflow-hidden")}>
-              <Link href={project.link ? project.link : ''} className={clsx(!project.link && "pointer-events-none")}>
+              <Link href={project.link ? project.link : ''} target="_blank" className={clsx(!project.link && "pointer-events-none")}>
                 <p className="textGradient text-2xl">
                   {project.name} {project.link && '- ' + project.link}
                 </p>
@@ -94,7 +95,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
         </div>
         <div className="h-full flex flex-col w-[10%] justify-between items-center">
           <div className={clsx(!visible && "translate-x-6 -translate-y-6 opacity-0", "rounded-2xl w-full aspect-square border border-[#fff] flex justify-center items-center transition-all duration-300 delay-150 relative overflow-hidden")}>
-            <Link href={project.github ? project.github : ''} className={clsx(!project.github && "pointer-events-none opacity-50")}>
+            <Link href={project.github ? project.github : ''} target="_blank" className={clsx(!project.github && "pointer-events-none opacity-50")}>
               <Github
                 size="5em"
                 strokeWidth={1}

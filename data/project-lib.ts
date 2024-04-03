@@ -27,7 +27,7 @@ export interface ProjectDB {
 export const projects: ProjectDB = {
   "migoverse": {
     name: "Migoverse",
-    photo_url: "project_thumbnails/docenate.png",
+    photo_url: "project_thumbnails/migoverse.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,

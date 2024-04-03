@@ -1,0 +1,32 @@
+@import "app/variables.module.scss";
+
+.projectDescription {
+  position: relative;
+  overflow-y: scroll;
+  overflow-y: overlay;
+
+  /* width */
+  &::-webkit-scrollbar {
+      position: absolute;
+      left: 0;
+      width: 5px;
+      display: none;
+  }
+   
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: transparent;
+  }
+   
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: $light;
+      border-radius: 5px;
+      width: 5px;
+  }
+   
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+      background: $middle-green-blue;
+  }
+}

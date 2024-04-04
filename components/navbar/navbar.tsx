@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
       </Link>
       {/* <Link href="/experience"> */}
-      <Link href="/construction">
+      <Link href="/experience">
         <div
           className={`${styles.button} ${pathname == "/experience" ? styles.active : ""
             }`}

@@ -4,7 +4,6 @@ import styles from "./experience.module.scss";
 import GitNode from "./components/GitNode";
 import { experiencesList } from "@/data/experience-lib";
 import Branch from "./components/Branch";
-import BottomBranch from "./components/BottomBranch";
 import { useEffect, useRef } from 'react';
 
 const ExperiencePage = () => {
@@ -12,7 +11,7 @@ const ExperiencePage = () => {
 
   const scrollToEnd = () => {
     const element = scrollRef.current;
-    const delay = 2000;
+    const delay = 3000;
     const duration = 15000; // Duration of scrolling animation in milliseconds
     const start = element.scrollLeft;
     const target = element.scrollWidth - element.clientWidth;

@@ -11,9 +11,7 @@ import useCheckMobileScreen from "@/hooks/screenWidth";
 const ProjectsPage = () => {
   const isMobile = useCheckMobileScreen();
   const [filters, setFilters] = useState<string[]>([]);
-
   const searchParams = useSearchParams();
-  const initialFilter = searchParams.get("skill");
 
   const makeDelay = (i: number) => {
     if ((i + 1) % 4 == 0) return i * 0.25 - 0.25;
@@ -32,8 +30,9 @@ const ProjectsPage = () => {
   };
 
   useEffect(() => {
+    const initialFilter = searchParams.get("skill");
     if (initialFilter) toggleFilter(initialFilter);
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className={styles.projectsWrapper}>

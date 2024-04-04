@@ -22,10 +22,10 @@ const ContentBox: FC<{ experience: Experience, i: number }> = ({ experience, i }
 
   const dateString = `${formatDate(experience.startDate)} - ${formatDate(experience.endDate)}`;
   const typeString = `${experience.type} | ${experience.location}`;
-  const roleStart = 1000 + 3000 * i + 100 * experience.name.length / 2;
+  const roleStart = 2000 + 3000 * i + 100 * experience.name.length / 2;
   const dateStart = roleStart + 70 * experience.role.length / 2;
   const pointBaseStart = dateStart + 2 * (70 * typeString.length) / 3;
-  const imageBaseStart = 1000 + 3000 * i + 100 * experience.name.length + 70 * experience.role.length / 2 + 70 * dateString.length;
+  const imageBaseStart = 2000 + 3000 * i + 100 * experience.name.length + 70 * experience.role.length / 2 + 70 * dateString.length;
 
   return <div className="h-full p-3">
     <div className="flex justify-between">
@@ -40,8 +40,8 @@ const ContentBox: FC<{ experience: Experience, i: number }> = ({ experience, i }
         <ul className="ml-5">
           {experience.points.map((point, j) => {
             return <li key={j}>
-              {point.map((section, k) => <span>
-                <Typewriter text={(k == 0 ? "• " : '') + section} startDelay={pointBaseStart + 500 * j + (k > 0 ? 20 * point.slice(0, k).reduce((c, s) => c + s.length, 0) : 0)} keyDelay={20} key={k} />
+              {point.map((section, k) => <span key={k}>
+                <Typewriter text={(k == 0 ? "• " : '') + section} startDelay={pointBaseStart + 500 * j + (k > 0 ? 20 * point.slice(0, k).reduce((c, s) => c + s.length, 0) : 0)} keyDelay={20} />
                 {k != point.length - 1 && <br />}
               </span>)}
             </li>
@@ -50,7 +50,7 @@ const ContentBox: FC<{ experience: Experience, i: number }> = ({ experience, i }
         <ul className="ml-5 invisible">
           {experience.points.map((point, j) => {
             return <li key={j}>
-              {point.map((section, k) => <span>
+              {point.map((section, k) => <span key={k}>
                 {(k == 0 ? "• " : '') + section}
                 {k != point.length - 1 && <br />}
               </span>)}
@@ -64,7 +64,7 @@ const ContentBox: FC<{ experience: Experience, i: number }> = ({ experience, i }
           .map((skillTag: SkillTag, j) => {
             const skill = allSkillList.filter((skill) => skill.icon_url == skillTag)[0];
             return (
-              <FlippedImage url={`/skills_icons/color/${skill.icon_url}.svg`} alt={skill.name + " logo"} startDelay={imageBaseStart + 300 * j} className={clsx(j != experience.skills.length - 1 && "mb-2", "min-w-8 min-h-8 relative")} />
+              <FlippedImage url={`/skills_icons/color/${skill.icon_url}.svg`} alt={skill.name + " logo"} startDelay={imageBaseStart + 300 * j} className={clsx(j != experience.skills.length - 1 && "mb-2", "min-w-8 min-h-8 relative")} key={j} />
             );
           })}
       </div>

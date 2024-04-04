@@ -25,7 +25,7 @@ const FlippedImage: FC<{ url: string, alt: string, startDelay: number, className
       // Remove the event listener when component unmounts
       return () => window.removeEventListener("load", onPageLoad);
     }
-  }, []);
+  }, [startDelay]);
 
   return <div className={clsx(className, hidden ? "rotate-x-450" : "rotate-x-0", "transition-all duration-1000")}>
     <Image

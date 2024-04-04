@@ -30,7 +30,7 @@ const Typewriter: FC<{ text: string, startDelay: number, keyDelay: number, disab
       // Remove the event listener when component unmounts
       return () => window.removeEventListener("load", onPageLoad);
     }
-  }, [body, disabled, keyDelay, startDelay, text]);
+  }, [disabled, keyDelay, startDelay, text]);
 
   if (disabled) return '';
 

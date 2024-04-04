@@ -1,4 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
+// Rotate X utilities
+// @ts-ignore
+const rotateX = plugin(({ addUtilities }) => {
+  addUtilities({
+    '.rotate-x-0': {
+      transform: 'rotateX(0deg)',
+    },
+    '.rotate-x-450': {
+      transform: 'rotateX(450deg)',
+    },
+  })
+})
+
+// Config file
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +25,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        round: ['var(--font-varela-round)'],
+        mono: ['var(--font-roboto-mono)'],
+      },
+    },
     colors: {
       light: "#f8f8f8",
       "dark-100": "#1c1c1c",
@@ -22,5 +44,8 @@ module.exports = {
       "gb-5": "#0fe",
     },
   },
-  plugins: [],
+  plugins: [rotateX],
+  safelist: [
+    'w-10'
+  ]
 };

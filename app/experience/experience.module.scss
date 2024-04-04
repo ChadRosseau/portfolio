@@ -1,12 +1,34 @@
 @use 'sass:math';
 @import "app/variables.module.scss";
 
-$box-height: calc((101/4) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
+$box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
 
-.wrapper {
+.experienceScroller {
+  &::-webkit-scrollbar {
+    background: $dark;
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, $primary-green 0%, $primary-green 20%, $primary-blue 80%, $primary-blue 100%);
+    background-attachment: fixed;
+    background-size: 100vw;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $dark;
+  }
+}
+
+.experienceWrapper {
   padding-top: calc(50vh - $box-height - 1rem);
   padding-bottom: calc(50vh - $box-height - 1rem);
   padding-left: 5rem;
+  overflow-x: scroll;
+
+  @at-root .wrapper#{&} {
+    overflow-x: scroll;
+  }
 }
 
 .bgGradient {
@@ -19,6 +41,7 @@ $box-height: calc((101/4) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+  z-index: 10;
 
   .innerNode {
     background: $dark;
@@ -26,50 +49,76 @@ $box-height: calc((101/4) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
+    width: 55%;
+    height: 55%;
     border-radius: 50%;
   }
 }
 
 .branch {
-  height: 1.25rem;
+  min-height: 1.25rem;
   margin-left: -15px;
   margin-right: -15px;
+
+  &.top {
+    position: absolute;
+    left: calc(($box-height) + 3rem);
+    width: calc(100% - (2 * ($box-height) + 4rem));
+  }
+
+  &.bottom {
+    position: absolute;
+    left: 2.5rem;
+    width: calc(100% - 3rem);
+  }
 }
 
 .cover {
   width: 100%;
   height: 100%;
+  z-index: 20;
   background: $dark;
   position: absolute;
   top: 0;
   right: 0;
   animation-name: reveal;
-  animation-duration: 4s;
-  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
 }
 
 .box {
+  width: fit-content;
   height: calc($box-height + 1rem);
+  padding-left: calc(($box-height) + 2rem);
+  padding-right: calc(($box-height) + 2rem);
 
   .lNode {
-    left: calc(($box-height / 2) - 2rem);
+    left: calc(($box-height) - 1.5rem);
   }
 
   .rNode {
-    left: calc(($box-height / 2) - 1.5rem);
+    right: calc(($box-height) - 1.5rem);
   }
 }
 
-.lClip {
-  // clip-path: polygon(0 96%, 4% 96%, 4% 100%, 100% 4%, 96% 4%, 96% 0);
-  clip-path: polygon(0 96%, 4% 96%, 4% 100%, 50% 4%, 46% 4%, 46% 0);
+.clip {
   width: $box-height;
   height: $box-height;
+
+  &.lClip {
+    // clip-path: polygon(0 96%, 4% 96%, 4% 100%, 100% 4%, 96% 4%, 96% 0);
+    clip-path: polygon(0 95.5%, 4.5% 95.5%, 4.5% 100%, 100% 4.5%, 95.5% 4.5%, 95.5% 0);
+  }
+
+  &.rClip {
+    // clip-path: polygon(0 96%, 4% 96%, 4% 100%, 100% 4%, 96% 4%, 96% 0);
+    clip-path: polygon(100% 96%, 96% 96%, 94% 98%, 0 4%, 4% 4%, 5% 1%);
+  }
+
 }
+
 
 @keyframes reveal {
   from {

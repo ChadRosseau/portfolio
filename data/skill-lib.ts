@@ -229,3 +229,8 @@ export const Skills: SkillCollection = {
     },
   ]
 }
+
+export const allSkillList: Skill[] = [];
+Object.values(Skills).forEach(skillList => {
+  skillList.forEach(skill => allSkillList.push(skill))
+})

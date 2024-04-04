@@ -27,7 +27,7 @@ export interface ProjectDB {
 export const projects: ProjectDB = {
   "migoverse": {
     name: "Migoverse",
-    photo_url: "project_thumbnails/migoverse.png",
+    photo_url: "/project_thumbnails/migoverse.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,
@@ -51,7 +51,7 @@ export const projects: ProjectDB = {
   },
   "portfolio": {
     name: "Portfolio",
-    photo_url: "project_thumbnails/portfolio.png",
+    photo_url: "/project_thumbnails/portfolio.png",
     skills: [
       SkillTag.HTML,
       SkillTag.Sass,
@@ -70,7 +70,7 @@ export const projects: ProjectDB = {
   },
   "convocord": {
     name: "Convocord",
-    photo_url: "project_thumbnails/convocord.png",
+    photo_url: "/project_thumbnails/convocord.png",
     skills: [
       SkillTag.HTML,
       SkillTag.Tailwind,
@@ -90,7 +90,7 @@ export const projects: ProjectDB = {
   },
   "utscguessr": {
     name: "UTSCGuessr",
-    photo_url: "project_thumbnails/utscguessr.png",
+    photo_url: "/project_thumbnails/utscguessr.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,
@@ -110,7 +110,7 @@ export const projects: ProjectDB = {
   },
   "okayreads": {
     name: "OkayReads",
-    photo_url: "project_thumbnails/okayreads.png",
+    photo_url: "/project_thumbnails/okayreads.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,
@@ -146,7 +146,7 @@ export const projects: ProjectDB = {
   },
   "dcyis": {
     name: "DCYIS",
-    photo_url: "project_thumbnails/dcyis.png",
+    photo_url: "/project_thumbnails/dcyis.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,
@@ -165,7 +165,7 @@ export const projects: ProjectDB = {
   },
   "dcsn": {
     name: "DCSN",
-    photo_url: "project_thumbnails/dcsn.png",
+    photo_url: "/project_thumbnails/dcsn.png",
     skills: [
       SkillTag.HTML,
       SkillTag.CSS,

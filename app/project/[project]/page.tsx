@@ -7,7 +7,7 @@ import {
 import { projects } from '@/data/project-lib';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Skill, SkillTag, Skills } from "@/data/skill-lib";
+import { Skill, SkillTag, Skills, allSkillList } from "@/data/skill-lib";
 import clsx from 'clsx';
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -19,11 +19,6 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
   const project = projects[params.project];
   let [visible, setVisible] = useState(false);
   let [help, setHelp] = useState(false);
-
-  const allSkillList: Skill[] = [];
-  Object.values(Skills).forEach(skillList => {
-    skillList.forEach(skill => allSkillList.push(skill))
-  })
 
   const navigateToProject = (offset: number) => {
     setVisible(false);
@@ -70,7 +65,7 @@ const ProjectPage = ({ params }: { params: { project: string } }) => {
         <div className="h-full flex flex-col w-[88%] justify-between">
           <div className={clsx(styles.previewOuter, !visible && "-translate-x-6 -translate-y-6 opacity-0", "rounded-2xl overflow-hidden relative aspect-video w-full h-auto transition-all duration-300 bg-gradient-to-tr from-gb-5 to-gb-1")}>
             <div className="absolute bg-dark-200 top-[2px] left-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-2xl overflow-hidden">
-              <Image src={'/' + project.photo_url} fill alt="hi" />
+              <Image src={project.photo_url} fill alt="hi" />
             </div>
             <HelpOverlay active={help} text="Project Preview" />
           </div>

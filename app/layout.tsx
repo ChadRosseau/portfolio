@@ -1,9 +1,11 @@
 import StarBackground from "@/components/stars/stars";
 import "./globals.scss";
-import { Inter } from "next/font/google";
+import { Inter, Varela_Round } from "next/font/google";
 import Navbar from "@/components/navbar/navbar";
+import clsx from "clsx";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const varelaRound = Varela_Round({ weight: "400", variable: '--font-varela-round', subsets: ["latin"] });
 
 export const metadata = {
   title: "Chad Rossouw",
@@ -43,7 +45,7 @@ export default function RootLayout({
         />
         <meta name="msapplication-TileColor" content="#da532c" />
       </head>
-      <body className={inter.className}>
+      <body className={clsx(varelaRound.variable, inter.variable, "font-round")}>
         {/* <StarBackground /> */}
         <Navbar />
         <div className="wrapper">{children}</div>

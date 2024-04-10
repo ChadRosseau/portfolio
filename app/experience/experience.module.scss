@@ -1,18 +1,20 @@
 @use 'sass:math';
 @import "app/variables.module.scss";
 
-$box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
+$box-height: calc((100/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
+$box-height: 35vh;
 
 .experienceScroller {
   &::-webkit-scrollbar {
     background: $dark;
-    display: none;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, $primary-green 0%, $primary-green 20%, $primary-blue 80%, $primary-blue 100%);
-    background-attachment: fixed;
-    background-size: 100vw;
+    display: none;
+    // background: linear-gradient(90deg, $primary-green 0%, $primary-green 20%, $primary-blue 80%, $primary-blue 100%);
+    // background-attachment: fixed;
+    // background-size: 100vw;
+    // border-radius: 1000px;
   }
 
   &::-webkit-scrollbar-track {
@@ -24,11 +26,6 @@ $box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
   padding-top: calc(50vh - $box-height - 1rem);
   padding-bottom: calc(50vh - $box-height - 1rem);
   padding-left: 5rem;
-  overflow-x: scroll;
-
-  @at-root .wrapper#{&} {
-    overflow-x: scroll;
-  }
 }
 
 .bgGradient {
@@ -82,7 +79,7 @@ $box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
   top: 0;
   right: 0;
   animation-name: reveal;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-delay: 0s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;
@@ -109,14 +106,20 @@ $box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
 
   &.lClip {
     // clip-path: polygon(0 96%, 4% 96%, 4% 100%, 100% 4%, 96% 4%, 96% 0);
-    clip-path: polygon(0 95.5%, 4.5% 95.5%, 4.5% 100%, 100% 4.5%, 95.5% 4.5%, 95.5% 0);
+    clip-path: polygon(0 95%, 5% 95%, 5% 100%, 100% 5%, 95% 5%, 95% 0);
   }
 
   &.rClip {
     // clip-path: polygon(0 96%, 4% 96%, 4% 100%, 100% 4%, 96% 4%, 96% 0);
-    clip-path: polygon(100% 96%, 96% 96%, 94% 98%, 0 4%, 4% 4%, 5% 1%);
+    clip-path: polygon(100% 95%, 95% 95%, 95% 100%, 0 5%, 5% 5%, 5% 0%);
   }
 
+}
+
+.cancelAnimText {
+  animation-name: remove;
+  animation-delay: 15s;
+  animation-fill-mode: forwards;
 }
 
 
@@ -127,5 +130,15 @@ $box-height: calc((101/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
 
   to {
     width: 0%;
+  }
+}
+
+@keyframes remove {
+  from {
+    display: initial;
+  }
+
+  to {
+    display: none;
   }
 }

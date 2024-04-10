@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { FC, useEffect, useState } from 'react'
 
-const FlippedImage: FC<{ url: string, alt: string, startDelay: number, className?: string }> = ({ url, alt, startDelay, className }) => {
+const FlippedImage: FC<{ url: string, alt: string, startDelay: number, className?: string, cancelled: boolean }> = ({ url, alt, startDelay, className, cancelled }) => {
   const [hidden, setHidden] = useState<boolean>(true);
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -27,7 +27,7 @@ const FlippedImage: FC<{ url: string, alt: string, startDelay: number, className
     }
   }, [startDelay]);
 
-  return <div className={clsx(className, hidden ? "rotate-x-450" : "rotate-x-0", "transition-all duration-1000")}>
+  return <div className={clsx(className, !cancelled && hidden ? "rotate-x-450" : "rotate-x-0", !cancelled && "transition-all duration-1000")}>
     <Image
       src={url}
       alt={alt}

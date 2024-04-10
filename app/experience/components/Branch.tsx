@@ -7,7 +7,7 @@ import Image from "next/image";
 import ContentBox from "./ContentBox";
 import Typewriter from "@/components/Typewriter";
 
-const Branch: FC<{ experience: Experience, top: boolean, i: number, final?: boolean }> = ({ experience, top, i, final }) => {
+const Branch: FC<{ experience: Experience, top: boolean, i: number, final?: boolean, cancelled: boolean }> = ({ experience, top, i, final, cancelled }) => {
 
   return <div className={clsx(styles.box, !final && "mr-[25rem]", "h-full relative py-5 box-border")}>
     {/* Nodes */}
@@ -29,14 +29,14 @@ const Branch: FC<{ experience: Experience, top: boolean, i: number, final?: bool
       <div className={clsx(experience.customLogoWidth ? experience.customLogoWidth : "w-12", "h-12 relative mr-4")}>
         <Image src={experience.logo_url} fill alt="hi" />
       </div>
-      <h3 className="m-0 text-5xl font-medium"><Typewriter text={experience.name} startDelay={2000 + 3000 * i} keyDelay={100} disabled={!top} /></h3>
+      <h3 className="m-0 text-5xl font-medium"><Typewriter text={experience.name} startDelay={2000 + 3000 * i} keyDelay={100} disabled={!top} cancelled={cancelled} /></h3>
     </div>
-    <ContentBox experience={experience} i={i} />
+    <ContentBox experience={experience} i={i} cancelled={cancelled} />
     <div className={clsx(top && "hidden", "-mb-24 mt-11 w-full flex px-3")}>
       <div className={clsx(experience.customLogoWidth ? experience.customLogoWidth : "w-12", "h-12 relative mr-4")}>
         <Image src={experience.logo_url} fill alt="hi" />
       </div>
-      <h3 className="m-0 text-5xl font-medium"><Typewriter text={experience.name} startDelay={2000 + 3000 * i} keyDelay={100} disabled={top} /></h3>
+      <h3 className="m-0 text-5xl font-medium"><Typewriter text={experience.name} startDelay={2000 + 3000 * i} keyDelay={100} disabled={top} cancelled={cancelled} /></h3>
     </div>
   </div>
 }

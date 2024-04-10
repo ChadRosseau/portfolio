@@ -1,179 +1,209 @@
 @import "app/variables.module.scss";
+
 .main {
-    min-height: 100vh;
-    padding: 8rem 8rem 4rem 10rem;
-    .middle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .textContainer {
-            width: 60%;
-            height: 100%;
-            h3 {
-              font-weight: bold;
-                font-size: 6rem;
-                margin-bottom: 30px;
-                span {
-                    background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            }
-            p {
-                margin-bottom: 30px;
-                font-size: 1.4rem;
-                animation: fadeInRight 1s ease 0s 1 normal both;
-                &:nth-of-type(1) {
-                    animation-delay: 4s;
-                }
-                &:nth-of-type(2) {
-                    animation-delay: 5s;
-                }
-                &:nth-of-type(3) {
-                    animation-delay: 6s;
-                }
-            }
+  min-height: 100vh;
+  padding: 8rem 8rem 4rem 10rem;
+
+  .middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .textContainer {
+      width: 60%;
+      height: 100%;
+
+      h3 {
+        font-weight: bold;
+        font-size: 6rem;
+        margin-bottom: 30px;
+
+        span {
+          background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-        .profileImage {
-            width: 35%;
-            border-radius: 20px;
-            animation: fadeInLeft 1s ease 0s 1 normal both;
-            // aspect-ratio: 1/1;
+      }
+
+      p {
+        margin-bottom: 30px;
+        font-size: 1.4rem;
+        animation: fadeInRight 1s ease 0s 1 normal both;
+
+        &:nth-of-type(1) {
+          animation-delay: 4s;
         }
+
+        &:nth-of-type(2) {
+          animation-delay: 5s;
+        }
+
+        &:nth-of-type(3) {
+          animation-delay: 6s;
+        }
+      }
     }
-    .buttonWrapper {
-        width: 60%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 50px;
-        .navButton {
-            // width: 17.5%;
-            width: 30%;
-            div {
-                width: 100%;
-                font-size: 1.4rem;
-                padding: 30px 0;
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                background: $dark2;
-                border-radius: 10px;
-                cursor: pointer;
-                transition-duration: 0.3s;
-                position: relative;
-                animation: fadeInUp 1s ease 0s 1 normal both;
-                margin-top: 20px;
-                p {
-                    background: $light;
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    text-align: center;
-                }
-                &::after {
-                    content: "";
-                    top: -2px;
-                    left: -2px;
-                    width: calc(100% + 4px);
-                    height: calc(100% + 4px);
-                    background: none;
-                    position: absolute;
-                    border: 2px solid $middle-green-blue !important;
-                    border-radius: 10px;
-                    // border-image: linear-gradient(-45deg, #0f8 50%, #0fa) 8;
-                    mask: conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0) var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat, conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat, linear-gradient(#000 0 0) padding-box no-repeat;
-                    -webkit-mask: conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0) var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat, conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat, linear-gradient(#000 0 0) padding-box no-repeat;
-                    transition: .2s, -webkit-mask-position .2s .2s;
-                }
-                &:hover {
-                    margin-top: 0px;
-                    p {
-                        background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
-                        background-clip: text;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                    }
-                    // border-color: $middle-green-blue;
-                    &::after {
-                        --_i: 100%;
-                        color: #CC333F;
-                        transition: .2s, -webkit-mask-size .2s .2s;
-                    }
-                }
-            }
-        }
+
+    .profileImage {
+      width: 35%;
+      border-radius: 20px;
+      animation: fadeInLeft 1s ease 0s 1 normal both;
+      aspect-ratio: 0.85;
+      overflow: hidden;
     }
+  }
+
+  .buttonWrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+
+    .navButton {
+      // width: 17.5%;
+      width: 20%;
+
+      div {
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 30px 0;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        background: $dark2;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        position: relative;
+        animation: fadeInUp 1s ease 0s 1 normal both;
+        margin-top: 20px;
+
+        p {
+          background: $light;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-align: center;
+        }
+
+        &::after {
+          content: "";
+          top: -2px;
+          left: -2px;
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          background: none;
+          position: absolute;
+          border: 2px solid $middle-green-blue !important;
+          border-radius: 10px;
+          // border-image: linear-gradient(-45deg, #0f8 50%, #0fa) 8;
+          mask: conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0) var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat, conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat, linear-gradient(#000 0 0) padding-box no-repeat;
+          -webkit-mask: conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0) var(--_i, 200%) 0 /200% var(--_i, 8px) border-box no-repeat, conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0) 0 var(--_i, 200%)/var(--_i, 8px) 200% border-box no-repeat, linear-gradient(#000 0 0) padding-box no-repeat;
+          transition: .2s, -webkit-mask-position .2s .2s;
+        }
+
+        &:hover {
+          margin-top: 0px;
+
+          p {
+            background: -webkit-linear-gradient(-45deg, $primary-blue, $primary-green);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          // border-color: $middle-green-blue;
+          &::after {
+            --_i: 100%;
+            color: #CC333F;
+            transition: .2s, -webkit-mask-size .2s .2s;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 100;
-        transform: translateY(0px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 100;
+    transform: translateY(0px);
+  }
 }
 
 @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 100;
-        transform: translateX(0px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 100;
+    transform: translateX(0px);
+  }
 }
 
 @keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 100;
-        transform: translateX(0px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 100;
+    transform: translateX(0px);
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .main {
-        padding: 100px 3rem;
-        .middle {
-            padding-top: 3rem;
-            flex-direction: column-reverse;
-            .textContainer {
-                width: 100%;
-                height: unset;
-                text-align: center;
-                h3 {
-                    font-size: 3rem;
-                    margin: 50px 0;
-                }
-                p {
-                    font-size: 0.9rem;
-                    animation: fadeInUp 1s ease 0s 1 normal both;
-                }
-            }
-            .profileImage {
-                width: 100%;
-                animation: fadeInUp 1s ease 0s 1 normal both;
-            }
+  .main {
+    padding: 100px 3rem;
+
+    .middle {
+      padding-top: 3rem;
+      flex-direction: column-reverse;
+
+      .textContainer {
+        width: 100%;
+        height: unset;
+        text-align: center;
+
+        h3 {
+          font-size: 3rem;
+          margin: 50px 0;
         }
-        .buttonWrapper {
-            width: 100%;
-            flex-direction: column;
-            .navButton {
-                width: 80%;
-                div {
-                    &:hover {
-                        margin-top: 20px;
-                    }
-                }
-            }
+
+        p {
+          font-size: 0.9rem;
+          animation: fadeInUp 1s ease 0s 1 normal both;
         }
+      }
+
+      .profileImage {
+        width: 100%;
+        animation: fadeInUp 1s ease 0s 1 normal both;
+      }
     }
+
+    .buttonWrapper {
+      width: 100%;
+      flex-direction: column;
+
+      .navButton {
+        width: 80%;
+
+        div {
+          &:hover {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
 }

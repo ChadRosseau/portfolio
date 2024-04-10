@@ -2,9 +2,6 @@
 
 import Image from "next/image";
 import styles from "./page.module.scss";
-import Navbar from "@/components/navbar/navbar";
-import StarBackground from "@/components/stars/stars";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedName from "@/components/AnimatedName";
 
@@ -26,20 +23,22 @@ const Home = () => {
             automation, and bringing innovative ideas to life.
           </p>
           <p>
-            Navigate this website to explore my projects, my
-            experience, my expertise, and the ideas I&apos;m excited
+            Navigate this website to explore my experience, my
+            projects, my expertise, and the ideas I&apos;m excited
             about.
           </p>
         </div>
-        <img
-          className={styles.profileImage}
-          src="images/headshot.jpg"
-          alt="headshot"
-        />
+        <div className={styles.profileImage}>
+          <Image
+            src="/images/headshot.jpg"
+            alt="headshot"
+            fill
+          />
+        </div>
       </div>
       <div className={styles.buttonWrapper}>
         {[
-          //"experience",
+          "experience",
           "projects",
           "skills",
           "resume",

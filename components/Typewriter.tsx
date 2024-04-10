@@ -1,7 +1,7 @@
 'use client'
 import { FC, useEffect, useState } from 'react'
 
-const Typewriter: FC<{ text: string, startDelay: number, keyDelay: number, disabled?: boolean }> = ({ text, startDelay, keyDelay, disabled }) => {
+const Typewriter: FC<{ text: string, startDelay: number, keyDelay: number, disabled?: boolean, cancelled: boolean }> = ({ text, startDelay, keyDelay, disabled, cancelled }) => {
 
   const [body, setBody] = useState<string>("‌‌");
 
@@ -13,6 +13,7 @@ const Typewriter: FC<{ text: string, startDelay: number, keyDelay: number, disab
       await sleep(startDelay);
       let tmp = body;
       for (let i = 0; i < text.length; i++) {
+        if (cancelled) break;
         await sleep(keyDelay);
         tmp += text[i];
         setBody(tmp);
@@ -30,11 +31,11 @@ const Typewriter: FC<{ text: string, startDelay: number, keyDelay: number, disab
       // Remove the event listener when component unmounts
       return () => window.removeEventListener("load", onPageLoad);
     }
-  }, [disabled, keyDelay, startDelay, text]);
+  }, [disabled, keyDelay, startDelay, text, cancelled]);
 
   if (disabled) return '';
 
-  return <span>{body}</span>;
+  return <span>{cancelled ? text : body}</span>;
 
 }
 

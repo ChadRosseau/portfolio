@@ -93,7 +93,7 @@ const Navbar = () => {
         </div>
       </Link>
       <div className={styles.pageLabelWrapper}>
-        <p className="textGradient">
+        <p className="textGradient text-3xl">
           {pathname == "/"
             ? "Home"
             : pathname.split('/')[1] == "project" ? "Project" : pathname.charAt(1).toUpperCase() + pathname.slice(2)}

@@ -31,6 +31,7 @@ export enum SkillTag {
     IEX = 'iex',
     Flutter = 'flutter',
     ReactNative = 'react_native',
+    Cloudflare = 'cloudflare',
 }
 
 export interface Skill {
@@ -146,6 +147,11 @@ export const Skills: SkillCollection = {
         {
             name: 'AWS',
             icon_url: 'aws',
+            proficiency: 2,
+        },
+        {
+            name: 'Cloudflare',
+            icon_url: 'cloudflare',
             proficiency: 2,
         },
     ],

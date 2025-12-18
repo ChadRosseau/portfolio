@@ -1,5 +1,5 @@
 @use 'sass:math';
-@import "app/variables.module.scss";
+@import "@/app/variables.module.scss";
 
 $box-height: calc((100/4.5) * math.sqrt(math.pow(1.25, 2)/2) * 1rem);
 $box-height: 35vh;

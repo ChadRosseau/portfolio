@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import ProjectPreview from "./projectPreview";
 import styles from "./projects.module.scss";
 import { Project, projects } from "@/data/project-lib";
@@ -8,7 +8,7 @@ import { Skill, SkillTag, Skills } from "@/data/skill-lib";
 import { useSearchParams } from "next/navigation";
 import useCheckMobileScreen from "@/hooks/screenWidth";
 
-const ProjectsPage = () => {
+const ProjectsPageContent = () => {
   const isMobile = useCheckMobileScreen();
   const [filters, setFilters] = useState<string[]>([]);
   const searchParams = useSearchParams();
@@ -93,6 +93,14 @@ const ProjectsPage = () => {
         <p className="textGradient text-center w-full mt-[10vh]">No public projects using this combination of skills</p>
       }
     </div>
+  );
+};
+
+const ProjectsPage = () => {
+  return (
+    <Suspense fallback={<div className="h-screen w-full" />}>
+      <ProjectsPageContent />
+    </Suspense>
   );
 };
 

@@ -2,20 +2,22 @@ $light: #F8F8F8;
 $dark: #1c1c1c;
 $dark2: #2d2d2d;
 $dark4: #7c7c7c;
+
 $primary-green: #0f8;
 $between-green: #0fa;
 $middle-green-blue: #0fb;
 $between-blue: #0fc;
 $primary-blue: #0fe;
+
 $primary-gradient-large: linear-gradient(45deg, #0fe 0%, #0f8 100%);
 $primary-gradient-small: linear-gradient(45deg, #0fe 50%, #0f8 100%);
 
-:export {
-    primaryGreen: $primary-green;
-    betweenGreen: $between-green;
-    middleGreenBlue: $middle-green-blue;
-    betweenBlue: $between-blue;
-    primaryBlue: $primary-blue;
-    primaryGradientLarge: $primary-gradient-large;
-    primaryGradientSmall: $primary-gradient-small;
-}
+/* :export { */
+/*   primaryGreen: #{$primary-green}; */
+/*   betweenGreen: #{$between-green}; */
+/*   middleGreenBlue: #{$middle-green-blue}; */
+/*   betweenBlue: #{$between-blue}; */
+/*   primaryBlue: #{$primary-blue}; */
+/*   primaryGradientLarge: #{$primary-gradient-large}; */
+/*   primaryGradientSmall: #{$primary-gradient-small}; */
+/* } */
